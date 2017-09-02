@@ -58,7 +58,7 @@ end
 
 # Part 3
 class BookInStock
-# YOUR CODE HERE
+# # YOUR CODE HERE
   attr_accessor :isbn, :price
   def initialize(num, cost)
     if num == ""
@@ -71,5 +71,28 @@ class BookInStock
     end
     
   end
+  
+  def price_as_string
+#     # turn price to string, save as string
+#     # for loop thru string to find decimal index
+#     # based on length determine if case
+    p_str = @price.to_s
+    if p_str =~ /^([0-9]*)\.([0-9]{3,})$/ #3 or more num after decimal
+      return "$#{$1}.#{$2[0..1]}"
+    elsif p_str =~ /(^[0-9]*)\.([0-9]{2})$/ #2 num after decimal
+      return "$#{$1}.#{$2}"
+    elsif p_str =~ /^([0-9]*)\.([0-9]{1})$/ #1 num after decimal
+      return "$#{$1}.#{$2}0"
+    elsif p_str =~ /^([0-9]*)$/ #No decimal
+      return "$#{$1}.00"
+    end
+    
+    # p_str = price.to_s
+    # p_str.each_index do |i|
+    #   if p_str[i] == "."
+    #     first = p_str[0..i - 1]
+  end
+    
+  
 end
 
